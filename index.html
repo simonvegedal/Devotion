@@ -3,16 +3,13 @@
 <html lang="da">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Devotion | Livemusik til din fest</title>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 
 </head>
 
@@ -308,46 +305,121 @@
                 </div>
 
                 <!-- Event Details -->
-                <div class="form-section">
-                    <h3>Arrangement detaljer</h3>
-                    <div class="form-row">
-                        <div class="form-group third">
-                            <label for="event-date">Dato*</label>
-                            <input type="date" id="event-date" class="form-control" required>
-                        </div>
-                        <div class="form-group third">
-                            <label for="start-time">Starttidspunkt</label>
-                            <input type="time" id="start-time" class="form-control">
-                        </div>
-                        <div class="form-group third">
-                            <label for="end-time">Sluttidspunkt</label>
-                            <input type="time" id="end-time" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="event">Type af arrangement*</label>
-                        <select id="event" class="form-control" required>
-                            <option value="">Vælg type</option>
-                            <option value="bryllup">Bryllup</option>
-                            <option value="firmafest">Firmafest</option>
-                            <option value="fødselsdag">Fødselsdag</option>
-                            <option value="byfest">Byfest</option>
-                            <option value="reception">Reception</option>
-                            <option value="jubilæum">Jubilæum</option>
-                            <option value="konfirmation">Konfirmation</option>
-                            <option value="polterabend">Polterabend</option>
-                            <option value="andet">Andet</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="venue">Spillested/adresse for arrangement</label>
-                        <input type="text" id="venue" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="guests">Antal gæster (ca.)</label>
-                        <input type="number" id="guests" class="form-control" min="1">
-                    </div>
-                </div>
+                <!-- Event Details section with 24-hour time inputs -->
+<div class="form-section">
+    <h3>Arrangement detaljer</h3>
+    <div class="form-row">
+        <div class="form-group third">
+            <label for="event-date">Dato*</label>
+            <input type="date" id="event-date" class="form-control" required>
+        </div>
+        <div class="form-group third">
+    <label for="start-time-hour">Starttidspunkt</label>
+    <div class="custom-time-input">
+        <select id="start-time-hour" class="form-control time-select">
+            <option value="">--</option>
+            <option value="00">00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+        </select>
+        <span class="time-separator">:</span>
+        <select id="start-time-minute" class="form-control time-select">
+            <option value="">--</option>
+            <option value="00">00</option>
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="45">45</option>
+        </select>
+        <input type="hidden" id="start-time" name="start-time">
+    </div>
+</div>
+<div class="form-group third">
+    <label for="end-time-hour">Sluttidspunkt</label>
+    <div class="custom-time-input">
+        <select id="end-time-hour" class="form-control time-select">
+            <option value="">--</option>
+            <option value="00">00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+        </select>
+        <span class="time-separator">:</span>
+        <select id="end-time-minute" class="form-control time-select">
+            <option value="">--</option>
+            <option value="00">00</option>
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="45">45</option>
+        </select>
+        <input type="hidden" id="end-time" name="end-time">
+    </div>
+</div>
+    </div>
+    <div class="form-group">
+        <label for="event">Type af arrangement*</label>
+        <select id="event" class="form-control" required>
+            <option value="">Vælg type</option>
+            <option value="bryllup">Bryllup</option>
+            <option value="firmafest">Firmafest</option>
+            <option value="fødselsdag">Fødselsdag</option>
+            <option value="byfest">Byfest</option>
+            <option value="reception">Reception</option>
+            <option value="jubilæum">Jubilæum</option>
+            <option value="konfirmation">Konfirmation</option>
+            <option value="polterabend">Polterabend</option>
+            <option value="andet">Andet</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="venue">Spillested/adresse for arrangement</label>
+        <input type="text" id="venue" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="guests">Antal gæster (ca.)</label>
+        <input type="number" id="guests" class="form-control" min="1">
+    </div>
+</div>
 
 
 
