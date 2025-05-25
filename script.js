@@ -27,7 +27,7 @@
                     q.nextElementSibling.classList.remove('active');
                 });
                 
-                // If it wasn't active before, activate it
+                
                 if (!isActive) {
                     question.classList.add('active');
                     answer.classList.add('active');
