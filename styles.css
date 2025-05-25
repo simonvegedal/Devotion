@@ -32,7 +32,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Accounts for fixed header height */
+    scroll-padding-top: 80px; 
 }
 
 body {
@@ -1050,52 +1050,49 @@ footer {
     }
 }
 
-/* Standard logo styles for nav/header */
+
 .logo-img {
-    height: 40px; /* Base height */
+    height: 40px; 
     max-width: 100%;
-    vertical-align: middle; /* Aligns the logo with surrounding text */
-    display: inline-block; /* Makes logo flow with text */
-    margin-right: 10px; /* Space between logo and text */
+    vertical-align: middle;
+    display: inline-block; 
+    margin-right: 10px; 
 }
 
 /* Hero section logo styles */
 .hero-logo {
     margin-bottom: 30px;
     display: flex;
-    align-items: center; /* Vertical alignment */
+    align-items: center; 
     justify-content: center;
     width: 100%;
 }
 
 .hero-logo-img {
-    max-width: 350px; /* Fixed maximum width */
+    max-width: 350px; 
     height: auto;
-    max-height: 120px; /* Adjust as needed */
+    max-height: 120px; 
 }
 
-/* Add this class when you want logo inline with text */
 .inline-logo {
     display: inline-flex;
     align-items: center;
-    gap: 12px; /* Space between logo and text */
+    gap: 12px;
 }
 
 .inline-logo .logo-img {
-    margin: 0; /* Remove default margin */
+    margin: 0; 
 }
 
-/* Text styling that may accompany the logo */
 .logo-text {
     display: inline-block;
     vertical-align: middle;
     font-size: 1rem;
 }
 
-/* Media queries for responsive logo sizes */
 @media (max-width: 768px) {
     .logo-img {
-        height: 30px; /* Smaller on mobile */
+        height: 30px; 
     }
    
     .hero-logo-img {
@@ -1104,11 +1101,11 @@ footer {
     }
     
     .inline-logo {
-        gap: 8px; /* Smaller gap on mobile */
+        gap: 8px; 
     }
 }
 
-/* Custom Time Input Styles */
+
 .custom-time-input {
     display: flex;
     align-items: center;
@@ -1123,7 +1120,7 @@ footer {
     font-weight: bold;
 }
 
-/* Make the selects appear as unified input */
+
 .custom-time-input select {
     border-radius: 4px;
     padding: 8px;
